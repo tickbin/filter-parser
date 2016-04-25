@@ -1,0 +1,26 @@
+{
+  "name": "tickbin-filter-parser",
+  "version": "0.0.1",
+  "description": "parse tickbin string filters into filter functions",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build/*",
+    "test": "tape -r source-map-support/register 'build/test/**/*.js'",
+    "build": "babel *.js **/*.js --source-maps --out-dir build/",
+    "watch": "babel *.js **/*.js --source-maps --out-dir build/ --watch",
+    "prebuild": "npm run clean",
+    "prewatch": "npm run clean"
+  },
+  "author": "Jonathan Bowers <jonotron@gmail.com>",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.7",
+    "babel-plugin-transform-es2015-parameters": "^6.7.0",
+    "babel-plugin-transform-es2015-spread": "^6.6.5",
+    "filtrex": "^0.5.4",
+    "source-map-support": "^0.4.0",
+    "tape": "^4.5.1"
+  }
+}
