@@ -1,76 +1,68 @@
 import test from 'tape'
 import compile from '../index'
 
-const et = { tags: ['#alien'] }
-const superman = { tags: ['#alien', '#dc', '#male'] }
-const batman = { tags: ['#human', '#dc', '#male'] }
-const ironman = { tags: ['#human', '#marvel', '#male'] }
-const wolverine = { tags: ['#human', '#mutant', '#marvel', '#male'] }
-const wonderwoman = { tags: ['#alien', '#dc', '#female'] }
-
-const heroes = [et, superman, batman, ironman, wolverine, wonderwoman]
+const pizza = { tags: ['#cheesy', '#italian'] }
+const sushi = { tags: ['#japanese'] }
+const udon = { tags: ['#noodle', '#japanese']}
+const pasta = { tags: ['#noodle', '#italian'] }
+const burrito = { tags: ['#cheesy', '#mexican'] }
 
 test('can filter on single tag', t => {
-  const exp = "#alien"
+  const exp = "#noodle"
   const filter = compile(exp)
 
-  t.ok(filter(et), 'et is an alien')
-  t.ok(filter(superman), 'superman is an alien')
-  t.notOk(filter(batman), 'batman is an human')
-  t.notOk(filter(ironman), 'ironman is a human')
-  t.notOk(filter(wolverine), 'wolverine is a human')
-  t.ok(filter(wonderwoman), 'wonderwoman is an alien')
+  t.notOk(filter(pizza), 'pizza is not a noodle')
+  t.notOk(filter(sushi), 'sushi is not a noodle')
+  t.ok(filter(udon), 'udon is a noodle')
+  t.ok(filter(pasta), 'pasta is a noodle')
+  t.notOk(filter(burrito), 'burrito is not a noodle')
   t.end()
 })
 
 test('can filter multiple and tags', t => {
-  const exp = "#alien and #dc"
+  const exp = "#noodle and #japanese"
   const filter = compile(exp)
 
-  t.notOk(filter(et), 'et is not an alien nor from dc')
-  t.ok(filter(superman), 'superman is an alien and from dc')
-  t.notOk(filter(batman), 'batman is not an alien but is from dc')
-  t.not(filter(ironman), 'ironman is not an alien nor from dc')
-  t.notOk(filter(wolverine), 'wolverine is not an alien nor from dc')
-  t.ok(filter(wonderwoman), 'wonderwoman is an alien and from dc')
+  t.notOk(filter(pizza), 'pizza is not a noodle')
+  t.notOk(filter(sushi), 'sushi is not a noodle')
+  t.ok(filter(udon), 'udon is a noodle and japanese')
+  t.notOk(filter(pasta), 'pasta is a noodle but not japanese')
+  t.notOk(filter(burrito), 'burrito is not a noodle')
   t.end()
 })
 
 test('can filter multiple or tags', t => {
-  const exp = "#human or #female"
+  const exp = "#cheesy or #italian"
   const filter = compile(exp)
 
-  t.notOk(filter(et), 'et is not human')
-  t.notOk(filter(superman), 'superman is not human')
-  t.ok(filter(batman), 'batman is a human')
-  t.ok(filter(ironman), 'ironman is a human')
-  t.ok(filter(wolverine), 'wolverine is human')
-  t.ok(filter(wonderwoman), 'wonderwoman is female')
+  t.ok(filter(pizza), 'pizza is cheesy AND italian')
+  t.notOk(filter(sushi), 'sushi is not cheesy nor italian')
+  t.notOk(filter(udon), 'udon is not cheesy nor italian')
+  t.ok(filter(pasta), 'pasta is italian')
+  t.ok(filter(burrito), 'burrito is cheesy')
   t.end()
 })
 
 test('negating tags', t => {
-  const exp = "#human and not #mutant"
+  const exp = "#cheesy and not #mexican"
   const filter = compile(exp)
 
-  t.notOk(filter(et), 'et is not human')
-  t.notOk(filter(superman), 'superman is not human')
-  t.ok(filter(batman), 'batman is a human')
-  t.ok(filter(ironman), 'ironman is a human')
-  t.notOk(filter(wolverine), 'wolverine is human but a mutant')
-  t.notOk(filter(wonderwoman), 'wonderwoman is an alien')
+  t.ok(filter(pizza), 'pizza is cheesy AND not mexican')
+  t.notOk(filter(sushi), 'sushi is not cheesy')
+  t.notOk(filter(udon), 'udon is not cheesy')
+  t.notOk(filter(pasta), 'pasta is not cheesy')
+  t.notOk(filter(burrito), 'burrito is cheesy but it is mexican')
   t.end()
 })
 
 test('negating non-existing tags', t => {
-  const exp = "not (#dc or #marvel)"
+  const exp = "not (#noodle or #cheesy)"
   const filter = compile(exp)
 
-  t.ok(filter(et), 'et is not dc or marvel')
-  t.notOk(filter(superman), 'superman is from dc')
-  t.notOk(filter(batman), 'batman is from dc')
-  t.notOk(filter(ironman), 'ironman is from marvel')
-  t.notOk(filter(wolverine), 'wolverine is from marvel')
-  t.notOk(filter(wonderwoman), 'wonderwoman is from dc')
+  t.notOk(filter(pizza), 'pizza is cheesy')
+  t.ok(filter(sushi), 'sushi is neither cheesy nor noodle')
+  t.notOk(filter(udon), 'udon is a noodle')
+  t.notOk(filter(pasta), 'pasta is a noodle')
+  t.notOk(filter(burrito), 'burrito is cheesy')
   t.end()
 })
