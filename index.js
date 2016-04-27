@@ -7,7 +7,9 @@ export default compile
 function compile(str) {
   const functions = { includes, dateBetween }
   str = replaceTags(str)
-  str = replaceDates(str)
+  // TODO: turned off date replacement for the time being
+  // it conflicts with the way tick log -d works and defaults
+  //str = replaceDates(str)
   return compileExpression(str, functions)
 }
 
