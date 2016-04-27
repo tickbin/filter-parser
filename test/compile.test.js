@@ -66,3 +66,17 @@ test('negating non-existing tags', t => {
   t.notOk(filter(burrito), 'burrito is cheesy')
   t.end()
 })
+
+const mar = { date: new Date('2016-03-15')}
+const apr = { date: new Date('2016-04-15')}
+const may = { date: new Date('2016-05-15')}
+
+test('filter on dates', t => {
+  const exp = 'Mar - Apr 2016'  
+  const filter = compile(exp)
+
+  t.ok(filter(mar), 'March is in bounds')
+  t.ok(filter(apr), 'April is in bounds')
+  t.notOk(filter(may), 'May is in bounds')
+  t.end()
+})
