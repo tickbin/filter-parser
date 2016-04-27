@@ -67,9 +67,9 @@ test('negating non-existing tags', t => {
   t.end()
 })
 
-const mar = { date: new Date('2016-03-15')}
-const apr = { date: new Date('2016-04-15')}
-const may = { date: new Date('2016-05-15')}
+const mar = { start: new Date('2016-03-15')}
+const apr = { start: new Date('2016-04-15')}
+const may = { start: new Date('2016-05-15')}
 
 test('filter on dates', t => {
   const exp = 'Mar - Apr 2016'  
@@ -77,6 +77,6 @@ test('filter on dates', t => {
 
   t.ok(filter(mar), 'March is in bounds')
   t.ok(filter(apr), 'April is in bounds')
-  t.notOk(filter(may), 'May is in bounds')
+  t.notOk(filter(may), 'May is out of bounds')
   t.end()
 })

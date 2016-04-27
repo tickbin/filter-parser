@@ -12,7 +12,7 @@ function replaceDates(str) {
   for (let match of parser.parse(str)) {
     let start = match.start.date().toISOString()
     let end = match.end.date().toISOString()
-    let dateText = `dateBetween(date, "${start}", "${end}")`
+    let dateText = `dateBetween(start, "${start}", "${end}")`
     result = result.replace(match.text, dateText)
   }
 
