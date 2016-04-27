@@ -2,7 +2,7 @@
   "name": "tickbin-filter-parser",
   "version": "0.0.1",
   "description": "parse tickbin string filters into filter functions",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "clean": "rm -rf build/*",
     "test": "tape -r source-map-support/register 'build/test/**/*.js'",
