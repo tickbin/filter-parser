@@ -5,11 +5,13 @@
   "main": "build/index.js",
   "scripts": {
     "clean": "rm -rf build/*",
-    "test": "tape -r source-map-support/register 'build/test/**/*.js'",
-    "build": "babel *.js **/*.js --source-maps --out-dir build/",
-    "watch": "babel *.js **/*.js --source-maps --out-dir build/ --watch",
+    "test": "env TZ='Etc/UTC' tape -r source-map-support/register 'build/test/**/*.js'",
+    "build": "babel src --source-maps --out-dir build/",
+    "watch": "babel src --source-maps --out-dir build/ --watch",
     "prebuild": "npm run clean",
-    "prewatch": "npm run clean"
+    "prewatch": "npm run clean",
+    "prepublish": "npm run build"
+
   },
   "author": "Jonathan Bowers <jonotron@gmail.com>",
   "license": "AGPL-3.0",
