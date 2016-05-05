@@ -10,9 +10,9 @@ function replaceDates(str) {
   let result = str
 
   for (let match of parser.parse(str)) {
-    let start = match.start.date().toISOString()
-    let end = match.end.date().toISOString()
-    let dateText = `dateBetween(start, "${start}", "${end}")`
+    let start = JSON.stringify(match.start.moment().toArray())
+    let end = JSON.stringify(match.end.moment().toArray())
+    let dateText = `start >= ${start} and start <= ${end}`
     result = result.replace(match.text, dateText)
   }
 
