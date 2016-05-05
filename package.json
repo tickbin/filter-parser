@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "chrono-node": "^1.2.1",
-    "chrono-refiner-wholemonth": "0.0.4",
-    "filtrex": "^0.5.4"
+    "chrono-refiner-wholemonth": "0.0.4"
   }
 }

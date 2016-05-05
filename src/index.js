@@ -1,13 +1,10 @@
-import jouch from 'jouch'
 import replaceTags from './replaceTags'
 import replaceDates from './replaceDates'
 
-export default compile
+export default parse
 
-function compile(str) {
+function parse(str) {
   str = replaceTags(str)
-  // TODO: turned off date replacement for the time being
-  // it conflicts with the way tick log -d works and defaults
-  //str = replaceDates(str)
-  return jouch(str)
+  str = replaceDates(str)
+  return str
 }
