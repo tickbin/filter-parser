@@ -1,8 +1,8 @@
 import test from 'tape'
-import replaceDates from '../replaceDates'
+import parse from '../'
 
 test('replace single date', t => {
-  const str = replaceDates('Feb - Mar')
-  t.equals(str, 'dateBetween(start, "2016-02-01T00:00:00.000Z", "2016-03-31T23:59:59.999Z")')
+  const str = parse('Feb - Mar')
+  t.equals(str, 'start >= [2016,1,1,0,0,0,0] and start <= [2016,2,31,23,59,59,999]')
   t.end()
 })

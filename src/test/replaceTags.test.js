@@ -1,14 +1,14 @@
 import test from 'tape'
-import replaceTags from '../replaceTags'
+import parse from '../'
 
 test('replace single tags', t => {
-  const str = replaceTags('#tag')
-  t.equals(str, 'includes(tags, "#tag")')
+  const str = parse('#tag')
+  t.equals(str, 'tags has "#tag"')
   t.end()
 })
 
 test('replace multiple tags', t => {
-  const str = replaceTags('#tag1 and #tag2')
-  t.equals(str, 'includes(tags, "#tag1") and includes(tags, "#tag2")')
+  const str = parse('#tag1 and #tag2')
+  t.equals(str, 'tags has "#tag1" and tags has "#tag2"')
   t.end()
 })
