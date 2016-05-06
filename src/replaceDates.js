@@ -12,7 +12,7 @@ function replaceDates(str) {
   for (let match of parser.parse(str)) {
     let start = JSON.stringify(match.start.moment().toArray())
     let end = JSON.stringify(match.end.moment().toArray())
-    let dateText = `start >= ${start} and start <= ${end}`
+    let dateText = `startArr >= ${start} and startArr <= ${end}`
     result = result.replace(match.text, dateText)
   }
 
