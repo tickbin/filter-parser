@@ -1,10 +1,11 @@
 import replaceTags from './replaceTags'
-import replaceDates from './replaceDates'
+import extractDates from './extractDates'
 
 export default parse
 
 function parse(str) {
-  str = replaceTags(str)
-  str = replaceDates(str)
-  return str
+  let {extracted, dates} = extractDates(str)
+  extracted = replaceTags(extracted)
+
+  return {parsed: extracted, dates}
 }
