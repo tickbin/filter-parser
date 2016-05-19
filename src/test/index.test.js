@@ -14,7 +14,7 @@ test('replace multiple tags', t => {
 })
 
 test('replace single date', t => {
-  const {dates} = parse('Feb - Mar')
+  const {dates} = parse('Feb - Mar 2016')
 
   t.equals(dates.length, 1, 'only one date found')
   t.equals(dates[0].text, '(startArr >= [2016,1,1,0,0,0,0] and startArr <= [2016,2,31,23,59,59,999])')
