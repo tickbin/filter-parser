@@ -13,6 +13,7 @@
     "prepublish": "npm run build"
   },
   "author": "Jonathan Bowers <jonotron@gmail.com>",
+  "repository": "https://github.com/tickbin/filter-parser",
   "license": "AGPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.7.7",
