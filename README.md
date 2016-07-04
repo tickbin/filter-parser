@@ -34,3 +34,5 @@ const {parsed, dates} = parse('#dog or #cat Jan - Feb')
     npm run build
 
 Copyright © 2016, MemoryLeaf Media Inc.
+
+Lead Maintainer: [Jonathan Bowers](https://github.com/jonotron)
