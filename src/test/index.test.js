@@ -20,3 +20,11 @@ test('replace single date', t => {
   t.equals(dates[0].text, '(startArr >= [2016,1,1,0,0,0,0] and startArr <= [2016,2,31,23,59,59,999])')
   t.end()
 })
+
+test('date relative to timezone offset', t => {
+  //  Timezone of -24 hours (-1440 minites) to ensure different date
+  const {dates} = parse('Feb - Mar 2016', -1440)
+
+  t.equals(dates[0].text, '(startArr >= [2016,1,2,0,0,0,0] and startArr <= [2016,3,1,23,59,59,999])')
+  t.end()
+})
