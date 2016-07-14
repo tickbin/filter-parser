@@ -3,8 +3,8 @@ import extractDates from './extractDates'
 
 export default parse
 
-function parse(str) {
-  let {extracted, dates} = extractDates(str)
+function parse(str, timezoneOffset) {
+  let {extracted, dates} = extractDates(str, timezoneOffset)
   extracted = replaceTags(extracted)
 
   return {parsed: extracted, dates}

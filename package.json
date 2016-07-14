@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "chrono-node": "^1.2.1",
-    "chrono-refiner-wholemonth": "0.0.4",
-    "moment": "^2.14.1"
+    "chrono-refiner-wholemonth": "0.0.4"
   }
 }
