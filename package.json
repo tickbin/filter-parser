@@ -1,6 +1,6 @@
 {
   "name": "tickbin-filter-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "parse tickbin string filters into filter functions",
   "main": "build/index.js",
   "scripts": {
