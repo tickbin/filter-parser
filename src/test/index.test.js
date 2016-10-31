@@ -13,11 +13,18 @@ test('replace multiple tags', t => {
   t.end()
 })
 
-test('replace single date', t => {
+test('replace single date range', t => {
   const {dates} = parse('Feb - Mar 2016')
 
   t.equals(dates.length, 1, 'only one date found')
   t.equals(dates[0].text, '(startArr >= [2016,1,1,0,0,0,0] and startArr <= [2016,2,31,23,59,59,999])')
+  t.end()
+})
+
+test('replace dates without specified year', t => {
+  const {dates} = parse('Jan - Feb')
+  
+  t.equals(dates[0].text, '(startArr >= [2016,0,1,0,0,0,0] and startArr <= [2016,1,28,23,59,59,999])') 
   t.end()
 })
 
