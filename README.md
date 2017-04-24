@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/jonotron/filter-parser/branches/master/shields_badge.svg)](https://semaphoreci.com/jonotron/filter-parser)
+[![Build Status](https://semaphoreci.com/api/v1/twostoryrobot/filter-parser/branches/master/shields_badge.svg)](https://semaphoreci.com/twostoryrobot/filter-parser)
 
 A simple first pass parser to take strings that look like 
 "#tag1 and #tag2 Jan - Feb" and convert them to strings (with the date portion
