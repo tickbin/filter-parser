@@ -22,7 +22,7 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "chrono-node": "^1.2.1",
+    "chrono-node": "^1.4.5",
     "chrono-refiner-wholemonth": "0.0.4"
   }
 }
