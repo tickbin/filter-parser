@@ -1,4 +1,8 @@
-[![Build Status](https://semaphoreci.com/api/v1/twostoryrobot/filter-parser/branches/master/shields_badge.svg)](https://semaphoreci.com/twostoryrobot/filter-parser)
+# Deprecation Notice 
+
+**Deprecation notice:** This project and codebase are not maintained. We might revisit this again in the future, but for now the code is read-only :)
+
+# Filter parser
 
 A simple first pass parser to take strings that look like 
 "#tag1 and #tag2 Jan - Feb" and convert them to strings (with the date portion
